@@ -55,3 +55,18 @@ class SegmentTree:
         
         return self.query(2 * node + 1, start, mid, left, min(right, mid)) + \
             self.query(2 * node + 2, mid + 1, end, max(mid + 1, left), right)
+
+    def find_kth_zero(self, node, start, end, k):
+
+        if k > self.tree[node]:
+            return -1
+
+        if start == end:
+            return start
+
+        mid = find_mid(start, end)
+
+        if self.tree[2 * node + 1] >= k:
+            return self.find_kth_zero(2 * node + 1, start, mid, k)
+        else:
+            return self.find_kth_zero(2 * node + 2, mid + 1, end, k - self.tree[2 * node + 1])

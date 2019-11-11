@@ -42,7 +42,22 @@ class SegmentTree:
         mid = (start + end) >> 1
         return self.query(2 * node + 1, start, mid, left, min(right, mid)) + \
                self.query(2 * node + 1, mid + 1, end, max(left, mid + 1), right)
-    
+
+    def find_first_index(self, node, start, end, total_sum):
+
+        if total_sum > self.tree[node]:
+            return -1
+
+        if start == end:
+            return start
+
+        mid = (start + end) >> 1
+
+        if self.tree[2 * node + 1] >= total_sum:
+            return self.find_first_index(2 * node + 1, start, mid, total_sum)
+        else:
+            return self.find_first_index(2 * node + 2, mid + 1, end, total_sum - self.tree[2 * node + 1])
+
     
 if __name__ == '__main__':
     pass
