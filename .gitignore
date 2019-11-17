@@ -5,3 +5,4 @@ Week*/*
 */*.xml
 *.iml
 __init__.py
+.vscode
