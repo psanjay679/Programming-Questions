@@ -33,4 +33,3 @@ word_set = ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaa
 dp = [None] * len(s)
 
 print(is_word_break(s, 0, word_set))
-git
